@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/gallery/:gallery_id', function(req, res) {
+  res.send(`You are on gallery ${req.params.gallery_id}`);
+});
+
 app.listen(port, host, () => {
   console.log(`Server running on http://${host}:${port}/`);
 });
