@@ -1,0 +1,41 @@
+<%- include('header') %>
+
+<h1>Object Information</h1>
+
+<div style="padding-top:25px">
+    <img src="<%- item.primaryimageurl%>" width="500px">
+</div>
+<ul>
+        <li>
+            Title: <i> <%- item.title %> </i>
+        </li>
+        <li>
+            Description: <%- item.description %>
+        </li>
+        <li>
+            Provenance: <%- item.provenance %>
+        </li>
+        <li>
+            Accession year: <%- item.accessionyear %>
+        </li>
+</ul>
+
+<!-- <%# comment submission form %> -->
+<h2> Comments </h2>
+<form action="/" method="post">
+    <div>
+        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;"></textarea>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+
+<!-- <%# display previously submitted comments %> -->
+<ul>
+    <% comments.forEach(comment => { %>
+        <li>
+            <%- comment.comment %>
+        </li>
+    <% }); %>
+</ul>
+
+<%- include('footer') %>

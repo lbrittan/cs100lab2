@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<h1>Objects in Gallery</h1>
+
+<!-- <%# initialize table and label columns %> -->
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>People</th>
+    <th>URL</th>
+</tr>
+
+<!-- <%# find relevant people in object data and add to string 'people' %> -->
+<% objects.forEach(object => {
+    let people = "";
+    let peoplelist = object.people;
+    if (object.people) {
+        peoplelist.forEach(person => {
+            if (person.name) {
+                if (people == "") {
+                    people = (person.name)
+                } else {
+                    people += (", " + person.name)
+                }
+            }
+        })}; %>
+ <!-- <%# display information for each object %> -->
+    <tr>
+        <td>
+            <a href="/object/<%- object.id %>"> <%- object.title %> </a>
+        </td>
+        <td>
+            <img src="<%-object.primaryimageurl%>" width="250px">
+        </td>
+        <td>
+            <%- people %>
+        </td>
+        <td>
+            <a href="<%-object.url%>"> <%- object.url %></a>
+        </td>
+    </tr>
+    <% }); %>
+</table>
+
+
+<%- include('footer') %>
